@@ -14,7 +14,6 @@ import (
 	"net/url"
 	"reflect"
 	"regexp"
-	"runtime"
 	"strings"
 	"sync"
 
@@ -43,12 +42,6 @@ var SessionId = uuid.New().String()
 // ApiResourceLocation Cache by Url
 var apiResourceLocationCache = make(map[string]*map[uuid.UUID]ApiResourceLocation)
 var apiResourceLocationCacheLock = sync.RWMutex{}
-
-var version = "6.0.0-b1" // todo: remove hardcoded version
-var versionSuffix = " (dev)"
-
-// Base user agent string.  The UserAgent set on the connection will be appended to this.
-var baseUserAgent = "go/" + runtime.Version() + " (" + runtime.GOOS + " " + runtime.GOARCH + ") azure-devops-go-api/" + version + versionSuffix
 
 // NewClient provides an Azure DevOps client
 // and copies the TLS config and timeout from the supplied connection
@@ -192,12 +185,6 @@ func (client *Client) CreateRequestMessage(ctx context.Context,
 	if !ok {
 		req.Header.Add(headerKeySession, SessionId)
 	}
-
-	userAgent := baseUserAgent
-	if client.userAgent != "" {
-		userAgent += " " + client.userAgent
-	}
-	req.Header.Add(headerUserAgent, userAgent)
 
 	for key, value := range additionalHeaders {
 		req.Header.Add(key, value)
