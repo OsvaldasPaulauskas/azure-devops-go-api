@@ -107,7 +107,7 @@ func (client *ClientImpl) AddMember(ctx context.Context, args AddMemberArgs) (*b
 	routeValues["memberId"] = *args.MemberId
 
 	locationId, _ := uuid.Parse("8ba35978-138e-41f8-8963-7b1ea2c5f775")
-	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -134,7 +134,7 @@ func (client *ClientImpl) CreateGroups(ctx context.Context, args CreateGroupsArg
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("5966283b-4196-4d57-9211-1b68f41ec1c2")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -159,7 +159,7 @@ func (client *ClientImpl) CreateIdentity(ctx context.Context, args CreateIdentit
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("dd55f0eb-6ea2-4fe4-9ebe-919e7dd1dfb4")
-	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -185,7 +185,7 @@ func (client *ClientImpl) CreateOrBindWithClaims(ctx context.Context, args Creat
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("90ddfe71-171c-446c-bf3b-b597cd562afd")
-	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -217,7 +217,7 @@ func (client *ClientImpl) CreateScope(ctx context.Context, args CreateScopeArgs)
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("4e11e2bf-1e79-4eb5-8f34-a6337bd0de38")
-	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0-preview.2", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -243,7 +243,7 @@ func (client *ClientImpl) DeleteGroup(ctx context.Context, args DeleteGroupArgs)
 	routeValues["groupId"] = *args.GroupId
 
 	locationId, _ := uuid.Parse("5966283b-4196-4d57-9211-1b68f41ec1c2")
-	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0", routeValues, nil, nil, "", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -266,7 +266,7 @@ func (client *ClientImpl) DeleteScope(ctx context.Context, args DeleteScopeArgs)
 	routeValues["scopeId"] = (*args.ScopeId).String()
 
 	locationId, _ := uuid.Parse("4e11e2bf-1e79-4eb5-8f34-a6337bd0de38")
-	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0-preview.2", routeValues, nil, nil, "", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -298,7 +298,7 @@ func (client *ClientImpl) ForceRemoveMember(ctx context.Context, args ForceRemov
 	}
 	queryParams.Add("forceRemove", strconv.FormatBool(*args.ForceRemove))
 	locationId, _ := uuid.Parse("8ba35978-138e-41f8-8963-7b1ea2c5f775")
-	resp, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -331,7 +331,7 @@ func (client *ClientImpl) GetDescriptorById(ctx context.Context, args GetDescrip
 		queryParams.Add("isMasterId", strconv.FormatBool(*args.IsMasterId))
 	}
 	locationId, _ := uuid.Parse("a230389a-94f2-496c-839f-c929787496dd")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -369,7 +369,7 @@ func (client *ClientImpl) GetIdentityChanges(ctx context.Context, args GetIdenti
 		queryParams.Add("scopeId", (*args.ScopeId).String())
 	}
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -402,7 +402,7 @@ func (client *ClientImpl) GetIdentitySnapshot(ctx context.Context, args GetIdent
 	routeValues["scopeId"] = *args.ScopeId
 
 	locationId, _ := uuid.Parse("d56223df-8ccd-45c9-89b4-eddf692400d7")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -421,7 +421,7 @@ type GetIdentitySnapshotArgs struct {
 // Read the max sequence id of all the identities.
 func (client *ClientImpl) GetMaxSequenceId(ctx context.Context, args GetMaxSequenceIdArgs) (*uint64, error) {
 	locationId, _ := uuid.Parse("e4a70778-cb2c-4e85-b7cc-3f3c7ae2d408")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -444,7 +444,7 @@ func (client *ClientImpl) GetScopeById(ctx context.Context, args GetScopeByIdArg
 	routeValues["scopeId"] = (*args.ScopeId).String()
 
 	locationId, _ := uuid.Parse("4e11e2bf-1e79-4eb5-8f34-a6337bd0de38")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.2", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -468,7 +468,7 @@ func (client *ClientImpl) GetScopeByName(ctx context.Context, args GetScopeByNam
 	}
 	queryParams.Add("scopeName", *args.ScopeName)
 	locationId, _ := uuid.Parse("4e11e2bf-1e79-4eb5-8f34-a6337bd0de38")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.2", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -487,7 +487,7 @@ type GetScopeByNameArgs struct {
 // Read identity of the home tenant request user.
 func (client *ClientImpl) GetSelf(ctx context.Context, args GetSelfArgs) (*IdentitySelf, error) {
 	locationId, _ := uuid.Parse("4bb02b5b-c120-4be2-b68e-21f7c50a4b82")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -504,7 +504,7 @@ type GetSelfArgs struct {
 // [Preview API]
 func (client *ClientImpl) GetSignedInToken(ctx context.Context, args GetSignedInTokenArgs) (*delegatedauthorization.AccessTokenResult, error) {
 	locationId, _ := uuid.Parse("6074ff18-aaad-4abb-a41e-5c75f6178057")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", nil, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -521,7 +521,7 @@ type GetSignedInTokenArgs struct {
 // [Preview API]
 func (client *ClientImpl) GetSignoutToken(ctx context.Context, args GetSignoutTokenArgs) (*delegatedauthorization.AccessTokenResult, error) {
 	locationId, _ := uuid.Parse("be39e83c-7529-45e9-9c67-0410885880da")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", nil, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -544,7 +544,7 @@ func (client *ClientImpl) GetTenant(ctx context.Context, args GetTenantArgs) (*T
 	routeValues["tenantId"] = *args.TenantId
 
 	locationId, _ := uuid.Parse("5f0a1723-2e2c-4c31-8cae-002d01bdd592")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -567,7 +567,7 @@ func (client *ClientImpl) GetUserIdentityIdsByDomainId(ctx context.Context, args
 	}
 	queryParams.Add("domainId", (*args.DomainId).String())
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -598,7 +598,7 @@ func (client *ClientImpl) ListGroups(ctx context.Context, args ListGroupsArgs) (
 		queryParams.Add("properties", *args.Properties)
 	}
 	locationId, _ := uuid.Parse("5966283b-4196-4d57-9211-1b68f41ec1c2")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -654,7 +654,7 @@ func (client *ClientImpl) ReadIdentities(ctx context.Context, args ReadIdentitie
 		queryParams.Add("options", string(*args.Options))
 	}
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -701,7 +701,7 @@ func (client *ClientImpl) ReadIdentitiesByScope(ctx context.Context, args ReadId
 		queryParams.Add("properties", *args.Properties)
 	}
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -736,7 +736,7 @@ func (client *ClientImpl) ReadIdentity(ctx context.Context, args ReadIdentityArg
 		queryParams.Add("properties", *args.Properties)
 	}
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -766,7 +766,7 @@ func (client *ClientImpl) ReadIdentityBatch(ctx context.Context, args ReadIdenti
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("299e50df-fe45-4d3a-8b5b-a5836fac74dc")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -799,7 +799,7 @@ func (client *ClientImpl) ReadMember(ctx context.Context, args ReadMemberArgs) (
 		queryParams.Add("queryMembership", string(*args.QueryMembership))
 	}
 	locationId, _ := uuid.Parse("8ba35978-138e-41f8-8963-7b1ea2c5f775")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -836,7 +836,7 @@ func (client *ClientImpl) ReadMemberOf(ctx context.Context, args ReadMemberOfArg
 		queryParams.Add("queryMembership", string(*args.QueryMembership))
 	}
 	locationId, _ := uuid.Parse("22865b02-9e4a-479e-9e18-e35b8803b8a0")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -869,7 +869,7 @@ func (client *ClientImpl) ReadMembers(ctx context.Context, args ReadMembersArgs)
 		queryParams.Add("queryMembership", string(*args.QueryMembership))
 	}
 	locationId, _ := uuid.Parse("8ba35978-138e-41f8-8963-7b1ea2c5f775")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -900,7 +900,7 @@ func (client *ClientImpl) ReadMembersOf(ctx context.Context, args ReadMembersOfA
 		queryParams.Add("queryMembership", string(*args.QueryMembership))
 	}
 	locationId, _ := uuid.Parse("22865b02-9e4a-479e-9e18-e35b8803b8a0")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -931,7 +931,7 @@ func (client *ClientImpl) RemoveMember(ctx context.Context, args RemoveMemberArg
 	routeValues["memberId"] = *args.MemberId
 
 	locationId, _ := uuid.Parse("8ba35978-138e-41f8-8963-7b1ea2c5f775")
-	resp, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -962,7 +962,7 @@ func (client *ClientImpl) UpdateIdentities(ctx context.Context, args UpdateIdent
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0", nil, queryParams, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", nil, queryParams, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -995,7 +995,7 @@ func (client *ClientImpl) UpdateIdentity(ctx context.Context, args UpdateIdentit
 		return marshalErr
 	}
 	locationId, _ := uuid.Parse("28010c54-d0c0-4c89-a5b0-1c9e188b9fb7")
-	_, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -1027,7 +1027,7 @@ func (client *ClientImpl) UpdateScope(ctx context.Context, args UpdateScopeArgs)
 		return marshalErr
 	}
 	locationId, _ := uuid.Parse("4e11e2bf-1e79-4eb5-8f34-a6337bd0de38")
-	_, err := client.Client.Send(ctx, http.MethodPatch, locationId, "6.0-preview.2", routeValues, nil, bytes.NewReader(body), "application/json-patch+json", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodPatch, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json-patch+json", "application/json", nil)
 	if err != nil {
 		return err
 	}

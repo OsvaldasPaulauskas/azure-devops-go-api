@@ -45,7 +45,7 @@ func (client *ClientImpl) GetOperation(ctx context.Context, args GetOperationArg
 		queryParams.Add("pluginId", (*args.PluginId).String())
 	}
 	locationId, _ := uuid.Parse("9a1b74b4-2ca8-4a9f-8470-c2f2e6fdc949")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}

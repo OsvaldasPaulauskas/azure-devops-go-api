@@ -109,7 +109,7 @@ func (client *ClientImpl) CreateConnectedService(ctx context.Context, args Creat
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("b4f70219-e18b-42c5-abe3-98b07d35525e")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -137,7 +137,7 @@ func (client *ClientImpl) CreateOrUpdateProxy(ctx context.Context, args CreateOr
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("ec1f4311-f2b4-4c15-b2b8-8990b80d2908")
-	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0-preview.2", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +169,7 @@ func (client *ClientImpl) CreateTeam(ctx context.Context, args CreateTeamArgs) (
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("d30a3dd1-f8ba-442a-b86a-bd0c0c383e59")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -198,7 +198,7 @@ func (client *ClientImpl) DeleteProxy(ctx context.Context, args DeleteProxyArgs)
 		queryParams.Add("site", *args.Site)
 	}
 	locationId, _ := uuid.Parse("ec1f4311-f2b4-4c15-b2b8-8990b80d2908")
-	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0-preview.2", nil, queryParams, nil, "", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -227,7 +227,7 @@ func (client *ClientImpl) DeleteTeam(ctx context.Context, args DeleteTeamArgs) e
 	routeValues["teamId"] = *args.TeamId
 
 	locationId, _ := uuid.Parse("d30a3dd1-f8ba-442a-b86a-bd0c0c383e59")
-	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0", routeValues, nil, nil, "", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -294,7 +294,7 @@ func (client *ClientImpl) GetConnectedServiceDetails(ctx context.Context, args G
 	routeValues["name"] = *args.Name
 
 	locationId, _ := uuid.Parse("b4f70219-e18b-42c5-abe3-98b07d35525e")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -325,7 +325,7 @@ func (client *ClientImpl) GetConnectedServices(ctx context.Context, args GetConn
 		queryParams.Add("kind", string(*args.Kind))
 	}
 	locationId, _ := uuid.Parse("b4f70219-e18b-42c5-abe3-98b07d35525e")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -352,7 +352,7 @@ func (client *ClientImpl) GetProcessById(ctx context.Context, args GetProcessByI
 	routeValues["processId"] = (*args.ProcessId).String()
 
 	locationId, _ := uuid.Parse("93878975-88c5-4e6a-8abb-7ddd77a8a7d8")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -371,7 +371,7 @@ type GetProcessByIdArgs struct {
 // Get a list of processes.
 func (client *ClientImpl) GetProcesses(ctx context.Context, args GetProcessesArgs) (*[]Process, error) {
 	locationId, _ := uuid.Parse("93878975-88c5-4e6a-8abb-7ddd77a8a7d8")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -401,7 +401,7 @@ func (client *ClientImpl) GetProject(ctx context.Context, args GetProjectArgs) (
 		queryParams.Add("includeHistory", strconv.FormatBool(*args.IncludeHistory))
 	}
 	locationId, _ := uuid.Parse("603fe2ac-9723-48b9-88ad-09305aa6c6e1")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -430,7 +430,7 @@ func (client *ClientImpl) GetProjectCollection(ctx context.Context, args GetProj
 	routeValues["collectionId"] = *args.CollectionId
 
 	locationId, _ := uuid.Parse("8031090f-ef1d-4af6-85fc-698cd75d42bf")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -456,7 +456,7 @@ func (client *ClientImpl) GetProjectCollections(ctx context.Context, args GetPro
 		queryParams.Add("$skip", strconv.Itoa(*args.Skip))
 	}
 	locationId, _ := uuid.Parse("8031090f-ef1d-4af6-85fc-698cd75d42bf")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -488,7 +488,7 @@ func (client *ClientImpl) GetProjectProperties(ctx context.Context, args GetProj
 		queryParams.Add("keys", listAsString)
 	}
 	locationId, _ := uuid.Parse("4976a71a-4487-49aa-8aab-a1eda469037a")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -525,7 +525,7 @@ func (client *ClientImpl) GetProjects(ctx context.Context, args GetProjectsArgs)
 		queryParams.Add("getDefaultTeamImageUrl", strconv.FormatBool(*args.GetDefaultTeamImageUrl))
 	}
 	locationId, _ := uuid.Parse("603fe2ac-9723-48b9-88ad-09305aa6c6e1")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -563,7 +563,7 @@ func (client *ClientImpl) GetProxies(ctx context.Context, args GetProxiesArgs) (
 		queryParams.Add("proxyUrl", *args.ProxyUrl)
 	}
 	locationId, _ := uuid.Parse("ec1f4311-f2b4-4c15-b2b8-8990b80d2908")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.2", nil, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", nil, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -596,7 +596,7 @@ func (client *ClientImpl) GetTeam(ctx context.Context, args GetTeamArgs) (*WebAp
 		queryParams.Add("$expandIdentity", strconv.FormatBool(*args.ExpandIdentity))
 	}
 	locationId, _ := uuid.Parse("d30a3dd1-f8ba-442a-b86a-bd0c0c383e59")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -636,7 +636,7 @@ func (client *ClientImpl) GetTeamMembersWithExtendedProperties(ctx context.Conte
 		queryParams.Add("$skip", strconv.Itoa(*args.Skip))
 	}
 	locationId, _ := uuid.Parse("294c494c-2600-4d7e-b76c-3dd50c3c95be")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -680,7 +680,7 @@ func (client *ClientImpl) GetTeams(ctx context.Context, args GetTeamsArgs) (*[]W
 		queryParams.Add("$expandIdentity", strconv.FormatBool(*args.ExpandIdentity))
 	}
 	locationId, _ := uuid.Parse("d30a3dd1-f8ba-442a-b86a-bd0c0c383e59")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -714,7 +714,7 @@ func (client *ClientImpl) QueueCreateProject(ctx context.Context, args QueueCrea
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("603fe2ac-9723-48b9-88ad-09305aa6c6e1")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", nil, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -739,7 +739,7 @@ func (client *ClientImpl) QueueDeleteProject(ctx context.Context, args QueueDele
 	routeValues["projectId"] = (*args.ProjectId).String()
 
 	locationId, _ := uuid.Parse("603fe2ac-9723-48b9-88ad-09305aa6c6e1")
-	resp, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -764,7 +764,7 @@ func (client *ClientImpl) RemoveProjectAvatar(ctx context.Context, args RemovePr
 	routeValues["projectId"] = *args.ProjectId
 
 	locationId, _ := uuid.Parse("54b2a2a0-859b-4d05-827c-ec4c862f641a")
-	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodDelete, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -794,7 +794,7 @@ func (client *ClientImpl) SetProjectAvatar(ctx context.Context, args SetProjectA
 		return marshalErr
 	}
 	locationId, _ := uuid.Parse("54b2a2a0-859b-4d05-827c-ec4c862f641a")
-	_, err := client.Client.Send(ctx, http.MethodPut, locationId, "6.0-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodPut, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -826,7 +826,7 @@ func (client *ClientImpl) SetProjectProperties(ctx context.Context, args SetProj
 		return marshalErr
 	}
 	locationId, _ := uuid.Parse("4976a71a-4487-49aa-8aab-a1eda469037a")
-	_, err := client.Client.Send(ctx, http.MethodPatch, locationId, "6.0-preview.1", routeValues, nil, bytes.NewReader(body), "application/json-patch+json", "application/json", nil)
+	_, err := client.Client.Send(ctx, http.MethodPatch, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json-patch+json", "application/json", nil)
 	if err != nil {
 		return err
 	}
@@ -858,7 +858,7 @@ func (client *ClientImpl) UpdateProject(ctx context.Context, args UpdateProjectA
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("603fe2ac-9723-48b9-88ad-09305aa6c6e1")
-	resp, err := client.Client.Send(ctx, http.MethodPatch, locationId, "6.0", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPatch, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -896,7 +896,7 @@ func (client *ClientImpl) UpdateTeam(ctx context.Context, args UpdateTeamArgs) (
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("d30a3dd1-f8ba-442a-b86a-bd0c0c383e59")
-	resp, err := client.Client.Send(ctx, http.MethodPatch, locationId, "6.0", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPatch, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}

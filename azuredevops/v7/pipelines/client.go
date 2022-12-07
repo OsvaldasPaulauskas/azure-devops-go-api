@@ -67,7 +67,7 @@ func (client *ClientImpl) CreatePipeline(ctx context.Context, args CreatePipelin
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("28e1305e-2afe-47bf-abaf-cbb0e6a91988")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", routeValues, nil, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -110,7 +110,7 @@ func (client *ClientImpl) GetArtifact(ctx context.Context, args GetArtifactArgs)
 		queryParams.Add("$expand", string(*args.Expand))
 	}
 	locationId, _ := uuid.Parse("85023071-bd5e-4438-89b0-2a5bf362a19d")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -159,7 +159,7 @@ func (client *ClientImpl) GetLog(ctx context.Context, args GetLogArgs) (*Log, er
 		queryParams.Add("$expand", string(*args.Expand))
 	}
 	locationId, _ := uuid.Parse("fb1b6d27-3957-43d5-a14b-a2d70403e545")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -200,7 +200,7 @@ func (client *ClientImpl) GetPipeline(ctx context.Context, args GetPipelineArgs)
 		queryParams.Add("pipelineVersion", strconv.Itoa(*args.PipelineVersion))
 	}
 	locationId, _ := uuid.Parse("28e1305e-2afe-47bf-abaf-cbb0e6a91988")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -237,7 +237,7 @@ func (client *ClientImpl) GetRun(ctx context.Context, args GetRunArgs) (*Run, er
 	routeValues["runId"] = strconv.Itoa(*args.RunId)
 
 	locationId, _ := uuid.Parse("7859261e-d2e9-4a68-b820-a5d84cc5bb3d")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -278,7 +278,7 @@ func (client *ClientImpl) ListLogs(ctx context.Context, args ListLogsArgs) (*Log
 		queryParams.Add("$expand", string(*args.Expand))
 	}
 	locationId, _ := uuid.Parse("fb1b6d27-3957-43d5-a14b-a2d70403e545")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -319,7 +319,7 @@ func (client *ClientImpl) ListPipelines(ctx context.Context, args ListPipelinesA
 		queryParams.Add("continuationToken", *args.ContinuationToken)
 	}
 	locationId, _ := uuid.Parse("28e1305e-2afe-47bf-abaf-cbb0e6a91988")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, queryParams, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -354,7 +354,7 @@ func (client *ClientImpl) ListRuns(ctx context.Context, args ListRunsArgs) (*[]R
 	routeValues["pipelineId"] = strconv.Itoa(*args.PipelineId)
 
 	locationId, _ := uuid.Parse("7859261e-d2e9-4a68-b820-a5d84cc5bb3d")
-	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "6.0-preview.1", routeValues, nil, nil, "", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodGet, locationId, "7.1-preview.1", routeValues, nil, nil, "", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -396,7 +396,7 @@ func (client *ClientImpl) RunPipeline(ctx context.Context, args RunPipelineArgs)
 		return nil, marshalErr
 	}
 	locationId, _ := uuid.Parse("7859261e-d2e9-4a68-b820-a5d84cc5bb3d")
-	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "6.0-preview.1", routeValues, queryParams, bytes.NewReader(body), "application/json", "application/json", nil)
+	resp, err := client.Client.Send(ctx, http.MethodPost, locationId, "7.1-preview.1", routeValues, queryParams, bytes.NewReader(body), "application/json", "application/json", nil)
 	if err != nil {
 		return nil, err
 	}
